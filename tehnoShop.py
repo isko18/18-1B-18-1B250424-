@@ -30,6 +30,14 @@ async def about_us(message: types.Message):
     await message.reply("Tehno-shop - Это магазин смартфонов. Мы открылись в 2024г в городе Ош. В нашем магазине вы можете приобрести смартфон любой модели: iPhone, Samsung, Redmi и другие")
 
 
+
+@dp.message_handler(text="Контакты")
+async def contact(message:types.Message):
+    await message.answer(f'{message.from_user.full_name}, вот наши контакты:')
+    await message.answer_contact("+996551519651", 'Azamkhodja', 'Saydabarov')
+    
+    
+
 Phone_buttons = [
     types.KeyboardButton("Samsung"),
     types.KeyboardButton("Iphone"),
@@ -105,10 +113,7 @@ async def process_contact(message: types.Message):
         del order_data[user_id]
 
 
-@dp.message_handler(text="Контакты")
-async def contact_info(message: types.Message):
-    await message.reply(f'{message.from_user.full_name}, Вот наши контакты:')
-    await message.answer_contact("+996551519651", 'Azamkhodja', 'Saydabarov')
+
 
 
 @dp.message_handler(text="Назад")
