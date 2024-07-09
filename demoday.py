@@ -55,7 +55,7 @@ async def start(message: types.Message):
     await message.reply(f'Приветствую, {message.from_user.full_name}! Приглашаю вас посетить Demoday в Geeks. Вот наши направления:', reply_markup=start_keyboard)
 
 async def request_contact(message: types.Message, direction: str):
-    botom = types.KeyboardButton("Это хочу:)", request_contact=True)
+    botom = types.KeyboardButton("Подвердить :)", request_contact=True)
     back_button = types.KeyboardButton("Назад")
     bottom = types.ReplyKeyboardMarkup(resize_keyboard=True).add(botom, back_button)
     await message.answer(f'Вы выбрали {direction}. Подтвердить:', reply_markup=bottom)
@@ -136,23 +136,6 @@ async def handle_contact(message: types.Message, state: FSMContext):
 async def back_start(message: types.Message):
     await start(message)
 
-class MallingState(StatesGroup):
-    text = State()
-
-@dp.message_handler(commands='malling')
-async def start_malling(message: types.Message):
-    await message.answer("Напишите текст для рассылки: ")
-    await MallingState.text.set()
-
-@dp.message_handler(state=MallingState.text)
-async def send_malling(message: types.Message, state: FSMContext):
-    await message.answer("Начинаю рассылку....")
-    cursor.execute("SELECT id FROM users;")
-    users_id = cursor.fetchall()
-    for user_id in users_id:
-        await bot.send_message(user_id[0], message.text)
-    await message.answer('Рассылка окончена...')
-    await state.finish()
 
 @dp.message_handler()
 async def not_found(message: types.Message):
