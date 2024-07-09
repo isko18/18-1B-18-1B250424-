@@ -15,7 +15,7 @@
 
 - Используйте SQLite
 
--- Таблица должна содержать следующие поля:
+* Таблица должна содержать следующие поля:
 
 - id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
 - first_name (TEXT)
