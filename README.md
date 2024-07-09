@@ -17,12 +17,12 @@
 
 Таблица должна содержать следующие поля:
 
-id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
-first_name (TEXT)
-last_name (TEXT)
-username (TEXT)
-direction (TEXT)
-number (TEXT)
+- id (INTEGER, PRIMARY KEY, AUTOINCREMENT)
+- first_name (TEXT)
+- last_name (TEXT)
+- username (TEXT)
+- direction (TEXT)
+- number (TEXT)
 
 
 Telegram бот:
