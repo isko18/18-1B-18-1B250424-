@@ -3,3 +3,4 @@ env/
 config.py
 sql.db
 users.db
+envanto.py
