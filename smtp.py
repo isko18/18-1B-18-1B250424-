@@ -27,6 +27,7 @@ def send_email(to_email, subject, message, image_path):
     except Exception as error:
         return f'Error {error}'
     
+    
 print(send_email('toksonbaevislam2004@gmail.com', 'ДОЛГОЖДАННЫЙ LAST SUNDAY + ВЫПУСКНОЙ🎓', '''Дорогие студенты!
   
 🗓В это воскресенье, 09 июня - состоится наш традиционный Last Sunday и Выпускной🚀

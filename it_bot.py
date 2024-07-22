@@ -1,6 +1,8 @@
-from aiogram import Bot, Dispatcher, types, executor
+from aiogram import Bot, Dispatcher, executor
 from logging import basicConfig, INFO
 from config import token
+from aiogram.types import Message
+from aiogram import types
 
 bot = Bot(token=token)
 dp = Dispatcher(bot)
@@ -16,7 +18,7 @@ start_buttons = [
 start_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True).add(*start_buttons)
 
 @dp.message_handler(commands='start')
-async def start(message:types.Message):
+async def start(message:Message):
     await message.answer(f"Здравствуйте, {message.from_user.full_name} !", reply_markup=start_keyboard)
 
 @dp.message_handler(text="О нас")
