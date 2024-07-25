@@ -4,7 +4,6 @@ from aiogram.types import Message, BotCommand
 from config import token
 import requests, time, aioschedule, asyncio, logging
 
-
 bot = Bot(token=token)
 dp = Dispatcher()
 logging.basicConfig(level=logging.INFO)

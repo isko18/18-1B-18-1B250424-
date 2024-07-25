@@ -3,6 +3,7 @@ from logging import basicConfig, INFO
 from config import token
 from aiogram.types import Message
 from aiogram import types
+from aiogram.types import BotCommand
 
 bot = Bot(token=token)
 dp = Dispatcher(bot)

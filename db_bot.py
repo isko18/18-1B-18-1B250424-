@@ -36,17 +36,20 @@ async def start(message:types.Message):
         cursor.connection.commit()
     await message.answer(f"Привет {message.from_user.full_name}")
     
-class MailingState(StatesGroup):
-    text = State()
-    
 @dp.message_handler(commands='mailing')
-async def start_mailing(message:types.Message):
+async def start_mailing(message: types.Message):
+    if message.from_user.id != ADMIN_ID:
+        await message.answer("У вас нет прав для использования этой команды.")
+        return
     await message.answer("Напишите текст для рассылки: ")
     await MailingState.text.set()
-    
-    
+
 @dp.message_handler(state=MailingState.text)
-async def send_mailing(message:types.Message, state:FSMContext):
+async def send_mailing(message: types.Message, state: FSMContext):
+    if message.from_user.id != ADMIN_ID:
+        await message.answer("У вас нет прав для использования этой команды.")
+        await state.finish()
+        return
     await message.answer("Начинаю рассылку...")
     cursor.execute('SELECT id FROM users;')
     users_id = cursor.fetchall()
