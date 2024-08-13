@@ -1,4 +1,5 @@
 from django.db.models import * 
+from apps.base.name import ICON
 
 # Create your models here.
 class Index(Model):
@@ -35,3 +36,34 @@ class Index(Model):
     class Meta:
         verbose_name = ''
         verbose_name_plural = 'Настройки главной страницы'
+
+class About_us(Model):
+    title = CharField(
+        max_length=255,
+        verbose_name='Заголовок о нас (о нас)'
+    )
+    description = TextField(
+        verbose_name="Описание о нас ()"
+    )
+    icon = CharField(
+        choices=ICON,
+        max_length=155,
+        verbose_name='иконка'
+    )
+
+    def __str__(self) -> str:
+        return self.title
+    
+    class Meta:
+        verbose_name = ''
+        verbose_name_plural = 'Настройки о нас'
+
+
+class Image(Model):
+    image = ImageField(
+        upload_to='image2/',
+        verbose_name='Фото'
+    )
+
+    class Meta:
+        verbose_name_plural = 'Фотография'
